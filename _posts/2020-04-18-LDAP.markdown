@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "Notes on OpenDirectory"
+date:   2020-04-18 12:03:15 +0200
+categories: jekyll macOS opendirectory ldap admin
+---
+
+
+# LDAP OpenDirectory
+
+## Network Admins
+If you have a group in your directory with gid 80 then it's members are administrators on all macs that are bound to that directory server. If not you have to add a network user or group to your local admin group.
+
+Members can administer Macs. Each mac must add this group to the admin group in /Local/Default/ via WGM or
+dseditgroup -o edit -u <localadmin> -P <pass> -a macadmin -t group admin (via ARD e.g.)
+
+sudo dseditgroup -o edit -a macadmin -t group admin on the client
+
+You still need a local admin for the step above.
+
+Attention: such a admin cannot make changes to /Local/Default … you’d need a „normal“ Admin (grp 80) for that (you can create it as also a MacAdmin … so no problem)
+
