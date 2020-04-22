@@ -61,6 +61,51 @@ $REALM= {
 EOF
 ```
 
+Alternatively create a corresponding record `cn=KerberosClient,cn=config,o=example` with the *apple-xmlplist* attribute:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>edu.mit.kerberos</key>
+	<dict>
+		<key>domain_realm</key>
+		<dict>
+			<key>.local</key>
+			<string>BERKERSHEIM</string>
+			<key>.example.com</key>
+			<string>BERKERSHEIM</string>
+			<key>example.com</key>
+			<string>BERKERSHEIM</string>
+		</dict>
+		<key>libdefaults</key>
+		<dict>
+			<key>default_realm</key>
+			<string>REALM</string>
+		</dict>
+		<key>realms</key>
+		<dict>
+			<key>REALM</key>
+			<dict>
+				<key>KADM_List</key>
+				<array>
+					<string>kdc.example.com</string>
+				</array>
+				<key>KDC_List</key>
+				<array>
+					<string>kdc.example.com</string>
+				</array>
+			</dict>
+		</dict>
+	</dict>
+	<key>generationID</key>
+	<integer>544631620</integer>
+</dict>
+</plist>
+
+```
+
 Make sure the user you're testing the SSO features of macOS with is able to obtain a valid kerberos ticket.
 
  Issue `klist` and make sure you see something like
