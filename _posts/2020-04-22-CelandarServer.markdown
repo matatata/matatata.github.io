@@ -117,4 +117,37 @@ I do recommend to get SSL working first, by creating your certificates. Note tha
 ### SSL
 Regarding the calendarserver.chain.pem file (if you use it): It must contain the server, intermediate and root certificate. This order works for me - so the pem files starts with the server certificate, followed by the intermediate and the root certificate. If you use the xca application, the xou can create such a chain file by exporting the server certificate as certificate chain.
 
+## Bonjour
+If you have an AirPort router or an AppleTV then they can serve as sleep proxy servers and thus wake your mac from sleep if necessary. For that you'll want to register the calendarserver with it with a LaunchDaemon:
 
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+        <key>KeepAlive</key>
+        <dict>
+                <key>OtherJobEnabled</key>
+                <dict>
+                        <key>org.calendarserver</key>
+                        <true/>
+                </dict>
+        </dict>
+        <key>Label</key>
+        <string>org.calendarserver.bonjour</string>
+        <key>ProgramArguments</key>
+        <array>
+                <string>dns-sd</string>
+                <string>-R</string>
+                <string>http</string>
+                <string>_http._tcp</string>
+                <string>local</string>
+                <string>8443</string>
+        </array>
+        <key>RunAtLoad</key>
+        <false/>
+</dict>
+</plist>
+```
+
+Create a file with the contents above in `/Library/LaunchDaemons/org.calendarserver.bonjour.plist` and load it `sudo launchctl load -w /Library/LaunchDaemons/org.calendarserver.bonjour.plist` .
