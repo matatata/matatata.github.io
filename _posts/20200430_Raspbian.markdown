@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "Raspbian server"
+date:   2020-04-30 12:03:15 +0200
+categories: jekyll Raspbian
+---
+
+
+# Raspbian Lite
+
+Install it. I'Ve found no better distro.
+
+## Network
+
+I tend to disable ipv6 everywhere. Add *ipv6.disable=1* to */boot/cmdline.txt* .
+
+My raspberry pi will have a static IP:
+
+Yes you still configure that in */etc/dhcpcd.conf* 
+
+```
+interface eth0
+static ip_address=10.1.11.4/24
+static routers=10.1.11.1
+```
+Note that I do not define a nameserver because the pi will be a nameserver himself. To do that add `static domain_name_servers=10.1.11.1`.
+
+## Resolvconfd
+
+No more editing */etc/resolv.conf* :-/ You would edit */etc/resolvconf.conf* although it's usually not necessary cause there's so much magic involved. However you could define things here if needed. I use *dnsmasq* as a local DNS and DHCP server so 127.0.0.1 would be the pi's namesever. But even that happens automatically, becaues /etc/resolvconf.conf knows about dnsmasq's resolv.conf file. However you'll want to add your upstream DNS (8.8.8.8 or the one your provider gave you or simply your main router's ip): `name_server=10.1.11.1`. You might also want to add your search domain such as `search_domain=fritz.box` or the one you invented and serve with dnsmasq.
+
+
+## dnsmasq
+TODO
+
+## Kerberos KDC
+http://chschneider.eu/linux/server/heimdal.shtml
+
+	apt-get install krb5-config libkrb5-26-heimdal heimdal-clients heimdal-kcm
+
+### remote admin
+https://answers.launchpad.net/ubuntu/+source/heimdal/+question/268828
+
+
+
