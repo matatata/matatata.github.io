@@ -20,7 +20,7 @@ For the start I highly recommend using (1) since it saves you some configuration
 Also remember to configure a "Center" Keyboard Binding in opentrack's Options. You'll need it. Tweak the mappings and so on. Have fun.
 
 ## Notes on installing x-plane plugins
-Installing unsigned X-Plane plugins often requires removing the qurantine flags by executing `sudo xattr -c opentrack.xpl` or `sudo xattr -cr .` inside the plugin's folder in case it comes in a folder which is quite common. Only do that for software you trust! Alternatively let macOS warn you and you'll have to trust the plugin in the system preferences.
+Installing unsigned X-Plane plugins often requires removing the qurantine flags by executing `sudo xattr -c opentrack.xpl` in this case or `sudo xattr -cr .` inside the plugin's folder in case it comes in a folder which is quite common. Only do that for software you trust! Alternatively let macOS warn you and you'll have to trust the plugin in the system preferences.
 
 ## Building
 
