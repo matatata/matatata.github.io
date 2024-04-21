@@ -8,6 +8,20 @@
 
 Get them here https://github.com/matatata/opentrack/releases
 
+## General notes on using it with X-Plane
+AFAIK you have three choices:
+
+1. Set opentrack's output to "X-Plane" and install opentrack's xplane-plugin ~/Desktop/opentrack/build/instal/xplane/opentrack.xpl by copying it into `<X-Plane 12>/Resources/plugins` before starting X-Plane.
+2. Set opentrack's to "UDP over network". Configure the remote address to be 127.0.0.1 Port 4242. Install the x-plane plugin [https://github.com/amyinorbit/headtrack](https://github.com/amyinorbit/headtrack). Start X-Plane and Fly! In X-Plane's Plugin-Menu activate HeadTracking. It should now pick up da Head-Position from opentrack.
+3. I guess the X-Camera xplane-plugin is also able to receive UDP position data so the configuration would be similar as in (2)
+
+For the start I highly recommend using (1) since it saves you some configuration work and you can solely work in opentrack.
+
+Also remember to configure a "Center" Keyboard Binding in opentrack's Options. You'll need it. Tweak the mappings and so on. Have fun.
+
+## Notes on installing x-plane plugins
+Installing unsigned X-Plane plugins often requires removing the qurantine flags by executing `sudo xattr -c opentrack.xpl` or `sudo xattr -cr .` inside the plugin's folder in case it comes in a folder which is quite common. Only do that for software you trust! Alternatively let macOS warn you and you'll have to trust the plugin in the system preferences.
+
 ## Building
 
 First install https://www.macports.org for your architecture (Intel or arm64), I did not get it to work with homebrew.
@@ -23,11 +37,11 @@ Open a Terminal:
     
     tar -xzf onnxruntime-osx.tgz 
 
-	 # We also want to compile opentack's xplane-plugin which is very convenient and need to download the X-lane SDK. In this case for X-Plane 12:
+	 # We also want to compile opentack's xplane-plugin which is very convenient and need to download the X-lane SDK. In this case for X-Plane 12. **For X-Plane 11 change the SDK version to 303, but note that you cannot only build for x86_64**
 	 
-	 curl -L https://developer.x-plane.com/wp-content/plugins/code-sample-generation/sample_templates/XPSDK401.zip > XPSDK401.zip
+	 curl -L https://developer.x-plane.com/wp-content/plugins/code-sample-generation/sample_templates/XPSDK401.zip > XPSDK.zip
 	 
-	 unzip XPSDK401.zip
+	 unzip XPSDK.zip
 
     git clone https://github.com/matatata/opentrack.git
 
@@ -78,20 +92,6 @@ It should say `opentrack.app: replacing existing signature`
         
 Now you should be able to start it. It will ask for permissions to access the Documents folder, because it wants to creatE/store the profile files. If you start tracking using trackers like PointTracker and neuralnet-Face that want to use a Webcam then macOS asks for permission. Grant permission, stop Tracking and restart again. Or maybe restart the app.
 
-
-# Notes on X-Plane
-AFAIK you have three choices:
-
-1. Set opentrack's output to "X-Plane" and install opentrack's xplane-plugin ~/Desktop/opentrack/build/instal/xplane/opentrack.xpl by copying it into `<X-Plane 12>/Resources/plugins` before starting X-Plane.
-2. Set opentrack's to "UDP over network". Configure the remote address to be 127.0.0.1 Port 4242. Install the x-plane plugin https://github.com/amyinorbit/headtrack. Start X-Plane and Fly! In X-Plane's Plugin-Menu activate HeadTracking. It should now pick up da Head-Position from opentrack.
-3. I guess the X-Camera xplane-plugin is also able to receive UDP position data so the configuration would be similar as in (2)
-
-For the start I highly recommend using (1) since it saves you some configuration work and you can solely work in opentrack.
-
-Also remember to configure a "Center" Keyboard Binding in opentrack's Options. You'll need it. Tweak the mappings and so on. Have fun.
-
-## Notes on installing x-plane plugins
-Installing unsigned X-Plane plugins often requires removing the qurantine flags by issuing `sudo xattr -cr .` inside it's folder before starting X-Plane. Only do that for software you trust! Alternatively let macOS warn you and you'll have to trust the plugin in the system preferences.
 
 
 
