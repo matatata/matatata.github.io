@@ -15,6 +15,11 @@ AFAIK you have three choices:
 2. Set opentrack's to "UDP over network". Configure the remote address to be 127.0.0.1 Port 4242. Install the x-plane plugin [https://github.com/amyinorbit/headtrack](https://github.com/amyinorbit/headtrack). Start X-Plane and Fly! In X-Plane's Plugin-Menu activate HeadTracking. It should now pick up da Head-Position from opentrack.
 3. I guess the X-Camera xplane-plugin is also able to receive UDP position data so the configuration would be similar as in (2)
 
+In all cases you have tio decide what input method you want to use.
+- In case you have a IR-camera and a IR-Reflector or LED-HeadClip use PointTracker.
+- If you have a FaceTime-Camera or regular WebCam - or even an iPhone choose Neuralnet-Tracker. This will track your face.
+- If you want to use the iOS or Android App Smoothtrack choose "UDP over network". Configure smoothtrack to send data to your computers ip-address.
+
 For the start I highly recommend using (1) since it saves you some configuration work and you can solely work in opentrack.
 
 Also remember to configure a "Center" Keyboard Binding in opentrack's Options. You'll need it. Tweak the mappings and so on. Have fun.
