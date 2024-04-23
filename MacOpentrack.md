@@ -25,7 +25,8 @@ Note that xou do not need to use opentrack at all in case you have some other tr
 ## Notes on installing x-plane plugins
 Installing unsigned X-Plane plugins often requires removing the qurantine flags by executing `sudo xattr -c opentrack.xpl` in this case or `sudo xattr -cr .` inside the plugin's folder in case it comes in a folder which is quite common. Only do that for software you trust! Alternatively let macOS warn you and you'll have to trust the plugin in the system preferences.
 
-## Building
+## Building opentrack yourself
+Note that the binaries I built use the original source code, but you'll have to trust me that I did not alter it. I encourage you to build the software yourself yet I still recommend to clone my [fork](https://github.com/matatata/opentrack) since I made some small tweaks so that the build actually works with the instructions I give. But please go ahead and review the [differences](https://github.com/opentrack/opentrack/compare/master...matatata:opentrack:master) between my fork and the original [repo](https://github.com/opentrack/opentrack) if there are any.
 
 First install https://www.macports.org for your architecture (Intel or arm64), I did not get it to work with homebrew.
 If you use homebrew, it may be necessary to temporarily comment out (#) the line that read something like this: `eval "$(/opt/homebrew/bin/brew shellenv)"` in case you have it in your ~/.zprofile or ~/.bash_profile file.
