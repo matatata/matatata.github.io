@@ -8,7 +8,7 @@
 
 Get them here https://github.com/matatata/opentrack/releases
 
-## General notes Headtracking and X-Plane on macOS with our without opentrack
+## General notes on Headtracking with X-Plane on macOS with or without using opentrack
 
 Set opentrack's output to "X-Plane" and install opentrack's xplane-plugin opentrack.xpl by copying it into `<X-Plane 12>/Resources/plugins`.
 
