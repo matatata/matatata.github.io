@@ -8,21 +8,19 @@
 
 Get them here https://github.com/matatata/opentrack/releases
 
-## General notes on using it with X-Plane
-AFAIK you have three choices:
+## General notes Headtracking and X-Plane on macOS with our without opentrack
 
-1. Set opentrack's output to "X-Plane" and install opentrack's xplane-plugin ~/Desktop/opentrack/build/instal/xplane/opentrack.xpl by copying it into `<X-Plane 12>/Resources/plugins` before starting X-Plane.
-2. Set opentrack's to "UDP over network". Configure the remote address to be 127.0.0.1 Port 4242. Install the x-plane plugin [https://github.com/amyinorbit/headtrack](https://github.com/amyinorbit/headtrack). Start X-Plane and Fly! In X-Plane's Plugin-Menu activate HeadTracking. It should now pick up da Head-Position from opentrack.
-3. I guess the X-Camera xplane-plugin is also able to receive UDP position data so the configuration would be similar as in (2)
+Set opentrack's output to "X-Plane" and install opentrack's xplane-plugin opentrack.xpl by copying it into `<X-Plane 12>/Resources/plugins`.
 
-In all cases you have tio decide what input method you want to use.
-- In case you have a IR-camera and a IR-Reflector or LED-HeadClip use PointTracker.
-- If you have a FaceTime-Camera or regular WebCam - or even an iPhone choose Neuralnet-Tracker. This will track your face.
-- If you want to use the iOS or Android App Smoothtrack choose "UDP over network". Configure smoothtrack to send data to your computers ip-address.
-
-For the start I highly recommend using (1) since it saves you some configuration work and you can solely work in opentrack.
+You then have to decide what input method you want to use.
+1. In case you have a IR-camera and a IR-Reflector or LED-HeadClip use PointTracker.
+2. If you have a FaceTime-Camera or regular WebCam - or even an iPhone choose Neuralnet-Tracker. This will track your face.
+3. If you want to use the iOS or Android App like Smoothtrack choose "UDP over network". Configure smoothtrack to send data to your computers ip-address.
 
 Also remember to configure a "Center" Keyboard Binding in opentrack's Options. You'll need it. Tweak the mappings and so on. Have fun.
+
+Note that xou do not need to use opentrack at all in case you have some other tracker like the Smoothtrack mobile app. In that case use'll probably want to use the x-plane plugin [https://github.com/amyinorbit/headtrack](https://github.com/amyinorbit/headtrack) or perhaps X-Camera. Or use opentrack in the middle.
+
 
 ## Notes on installing x-plane plugins
 Installing unsigned X-Plane plugins often requires removing the qurantine flags by executing `sudo xattr -c opentrack.xpl` in this case or `sudo xattr -cr .` inside the plugin's folder in case it comes in a folder which is quite common. Only do that for software you trust! Alternatively let macOS warn you and you'll have to trust the plugin in the system preferences.
