@@ -43,7 +43,7 @@ Open a Terminal:
 
 	 # We also want to compile opentack's xplane-plugin which is very convenient and need to download the X-lane SDK. In this case for X-Plane 12. **For X-Plane 11 change the SDK version to 303, but note that you cannot only build for x86_64**
 	 
-	 curl -L https://developer.x-plane.com/wp-content/plugins/code-sample-generation/sample_templates/XPSDK401.zip > XPSDK.zip
+	 curl -L http://developer.x-plane.com/wp-content/plugins/code-sample-generation/sdk_zip_files/XPSDK401.zip > XPSDK.zip
 	 
 	 unzip XPSDK.zip
 
