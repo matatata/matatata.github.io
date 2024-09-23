@@ -58,32 +58,38 @@ Open a Terminal:
 In case you're on a Apple-Silicon Mac: `export OTR_OSX_ARCH=arm64`
 
 
-    sudo port install cmake qt5 opencv4 libomp create-dmg ImageMagick
+    sudo port install cmake qt5 opencv4 libomp create-dmg ImageMagick clang-18 libunwind
     
     cd ~/Desktop/opentrack
     
-    cmake \
-    -DOpenCV_DIR=/opt/local/libexec/opencv4/cmake \
-    -DONNXRuntime_LIBRARY=~/Desktop/onnxruntime-osx-universal2-1.17.3/lib/libonnxruntime.dylib \
-    -DONNXRuntime_INCLUDE_DIR=~/Desktop/onnxruntime-osx-universal2-1.17.3/include \
-    -DOpenMP_CXX_FLAG="-Xclang -fopenmp" \
-    -DOpenMP_CXX_INCLUDE_DIR=/opt/local/include/libomp \
-    -DOpenMP_CXX_LIB_NAMES=libomp \
-    -DOpenMP_C_FLAG="-Xclang -fopenmp" \
-    -DOpenMP_C_INCLUDE_DIR=/opt/local/include/libomp \
-    -DOpenMP_C_LIB_NAMES=libomp \
-    -DOpenMP_libomp_LIBRARY=/opt/local/lib/libomp/libomp.dylib \
-    -DSDK_XPLANE=~/Desktop/SDK \
-    -S . -B build --toolchain cmake/apple.cmake
+    cmake -DCMAKE_C_COMPILER=/opt/local/bin/clang \
+        -DCMAKE_CXX_COMPILER=/opt/local/bin/clang++ \
+	-DOpenCV_DIR=/opt/local/libexec/opencv4/cmake \
+	-DONNXRuntime_LIBRARY=~/Desktop/onnxruntime-osx-universal2-1.17.3/lib/libonnxruntime.dylib \
+	-DONNXRuntime_INCLUDE_DIR=~/Desktop/onnxruntime-osx-universal2-1.17.3/include \
+	-DOpenMP_CXX_FLAG="-fopenmp" \
+	-DOpenMP_CXX_INCLUDE_DIR=/opt/local/include/libomp \
+	-DOpenMP_CXX_LIB_NAMES=libomp \
+	-DOpenMP_C_FLAG="-fopenmp" \
+	-DOpenMP_C_INCLUDE_DIR=/opt/local/include/libomp \
+	-DOpenMP_C_LIB_NAMES=libomp \
+	-DOpenMP_libomp_LIBRARY=/opt/local/lib/libomp/libomp.dylib \
+	-DSDK_XPLANE=~/Desktop/SDK \
+	-S . -B build --toolchain cmake/apple.cmake
     
     cd build
     make install
 
 Have a cup of tea.
 
-    open install
+--------------
+2024.1.1: I get the error ERROR: Cannot resolve rpath "@rpath/libunwind.1.dylib" which will stop tacker-neuralnet from showing up in the list. You can fix it by this:
+
+    cp /opt/local/lib/libunwind.1.dylib install/opentrack.app/Contents/Frameworks/
+--------------
+
         
-If everything went fine You'll now see the opentrack.app in ~/Desktop/opentrack/build/install. You'll also find a .dmg-File in ~/Desktop/build/. If you open the opentrack.app directly from the install-Folder it probably crashes on Apple-Silicon with something like  or similar.
+If everything went fine You'll now see the opentrack.app in ~/Desktop/opentrack/build/install. You'll also find a .dmg-File in ~/Desktop/build/. If you open the opentrack.app directly from the install-Folder it probably crashes on Apple-Silicon with some nasty warning/error.
 
 In that case you'll have to sign it locally to be able to run it. I wonder why this error messages sucks so much.
 
