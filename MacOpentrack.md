@@ -54,16 +54,24 @@ Open a Terminal:
     export PATH=$PATH:/opt/local/bin:/opt/local/libexec/qt5/bin
     
     sudo port selfupdate
+    
+    # SKIP this if on INTEL
+    export OTR_OSX_ARCH=arm64
 
-In case you're on a Apple-Silicon Mac: `export OTR_OSX_ARCH=arm64`
+    sudo port -N install cmake qt5 opencv4 libomp create-dmg ImageMagick libunwind
 
-
-    sudo port install cmake qt5 opencv4 libomp create-dmg ImageMagick clang-18 libunwind
+    # ON INTEL:
+    # 1) also install
+    	sudo port -N install clang-18 llvm-18
+     	sudo port select --set clang mp-clang-18
+        sudo port select --set llvm mp-llvm-18
+    # 2) add the following to the cmake call below
+    # 	-DCMAKE_C_COMPILER=/opt/local/bin/clang -DCMAKE_CXX_COMPILER=/opt/local/bin/clang++
+    #   add -Xclang to where -fopenmp is set
     
     cd ~/Desktop/opentrack
     
-    cmake -DCMAKE_C_COMPILER=/opt/local/bin/clang \
-        -DCMAKE_CXX_COMPILER=/opt/local/bin/clang++ \
+    cmake \
 	-DOpenCV_DIR=/opt/local/libexec/opencv4/cmake \
 	-DONNXRuntime_LIBRARY=~/Desktop/onnxruntime-osx-universal2-1.17.3/lib/libonnxruntime.dylib \
 	-DONNXRuntime_INCLUDE_DIR=~/Desktop/onnxruntime-osx-universal2-1.17.3/include \
@@ -79,13 +87,24 @@ In case you're on a Apple-Silicon Mac: `export OTR_OSX_ARCH=arm64`
     
     cd build
     make install
+    
+    # on INTEL switch bach to default compiler:
+    # sudo port select --set clang none
+    # sudo port select --set llvm none
 
 Have a cup of tea.
 
 --------------
-2024.1.1: I get the error ERROR: Cannot resolve rpath "@rpath/libunwind.1.dylib" which will stop tacker-neuralnet from showing up in the list. You can fix it by this:
+2024.1.1: on INTEL I get the error ERROR: Cannot resolve rpath "@rpath/libunwind.1.dylib" which will stop tacker-neuralnet from showing up in the list. You can fix it by this:
 
     cp /opt/local/lib/libunwind.1.dylib install/opentrack.app/Contents/Frameworks/
+
+or perhaps even better: add this to opentrack/macosx/make-app-bundle.sh after the line starting with macdeployqt
+
+    cp /opt/local/lib/libunwind.1.dylib $install/$APPNAME.app/Contents/Frameworks/
+
+and call `make install` again
+
 --------------
 
         
