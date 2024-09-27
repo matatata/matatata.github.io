@@ -2,7 +2,7 @@
 
 **Including PointTracker, NeuralNet(Face)Tracker and xplane-plugin**
 
-*Tested on Sonoma 14.4*
+*Tested on Sonoma 14.6, Opentrack 2024.1.1*
 
 ## Prebuilt (unsigned) binaries
 
