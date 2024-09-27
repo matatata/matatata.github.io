@@ -67,6 +67,7 @@ Open a Terminal:
 	#sudo port select --set llvm mp-llvm-18
     # 2) add the following to the cmake call below
     # 	-DCMAKE_C_COMPILER=/opt/local/bin/clang -DCMAKE_CXX_COMPILER=/opt/local/bin/clang++
+    # 3) Remove the "-Xclang" bits
     
     cd ~/Desktop/opentrack
     
@@ -74,10 +75,10 @@ Open a Terminal:
 	-DOpenCV_DIR=/opt/local/libexec/opencv4/cmake \
 	-DONNXRuntime_LIBRARY=~/Desktop/onnxruntime-osx-universal2-1.17.3/lib/libonnxruntime.dylib \
 	-DONNXRuntime_INCLUDE_DIR=~/Desktop/onnxruntime-osx-universal2-1.17.3/include \
-	-DOpenMP_CXX_FLAG="-fopenmp" \
+	-DOpenMP_CXX_FLAG="-Xlang -fopenmp" \
 	-DOpenMP_CXX_INCLUDE_DIR=/opt/local/include/libomp \
 	-DOpenMP_CXX_LIB_NAMES=libomp \
-	-DOpenMP_C_FLAG="-fopenmp" \
+	-DOpenMP_C_FLAG="-Xlang -fopenmp" \
 	-DOpenMP_C_INCLUDE_DIR=/opt/local/include/libomp \
 	-DOpenMP_C_LIB_NAMES=libomp \
 	-DOpenMP_libomp_LIBRARY=/opt/local/lib/libomp/libomp.dylib \
