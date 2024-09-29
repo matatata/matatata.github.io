@@ -72,7 +72,7 @@ Open a Terminal:
     cd ~/Desktop/opentrack
     
     cmake \
-        -DCMAKE_BUILD_TYPE=RELEASE \
+	-DCMAKE_BUILD_TYPE=RELEASE \
 	-DOpenCV_DIR=/opt/local/libexec/opencv4/cmake \
 	-DONNXRuntime_LIBRARY=~/Desktop/onnxruntime-osx-universal2-1.17.3/lib/libonnxruntime.dylib \
 	-DONNXRuntime_INCLUDE_DIR=~/Desktop/onnxruntime-osx-universal2-1.17.3/include \
