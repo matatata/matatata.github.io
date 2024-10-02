@@ -68,6 +68,12 @@ Open a Terminal:
     # 2) add the following to the cmake call below
     # 	-DCMAKE_C_COMPILER=/opt/local/bin/clang -DCMAKE_CXX_COMPILER=/opt/local/bin/clang++
     # 3) Remove the "-Xclang" bits
+
+    # For WINE integration you'll need to have to install the 'dev' variant of wine
+    # and then add the -DSDK_WINE=1 option
+    # sudo port install wine-stable +dev
+    # Also in the final product the third-party files from the dmg-image need to be copied into
+    # opentrack.app/Contents/MacOS/PlugIns/
     
     cd ~/Desktop/opentrack
     
