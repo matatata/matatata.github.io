@@ -6,16 +6,17 @@
 
 ## Prebuilt (unsigned) binaries
 
-Get them here https://github.com/matatata/opentrack/releases
+Get them [https://github.com/matatata/opentrack/releases](here)
 
 ## General notes on Headtracking with X-Plane on macOS with or without using opentrack
 
-Set opentrack's output to "X-Plane" and install opentrack's xplane-plugin opentrack.xpl by copying it into `<X-Plane 12>/Resources/plugins`.
+If you only want to use it with X-Plane set opentrack's output to "X-Plane" and install opentrack's xplane-plugin opentrack.xpl by copying it into `<X-Plane 12>/Resources/plugins`. Disable wine in the options dialog.
 
 You then have to decide what input method you want to use.
-1. In case you have a IR-camera and a IR-Reflector or LED-HeadClip use PointTracker.
+1. In case you have a IR-camera and a IR-Reflector or LED-HeadClip (recommended) use PointTracker.
 2. If you have a FaceTime-Camera or regular WebCam - or even an iPhone choose Neuralnet-Tracker. This will track your face.
 3. If you want to use the iOS or Android App like Smoothtrack choose "UDP over network". Configure smoothtrack to send data to your computers ip-address.
+4. If you want to feed motion data into a game that's run via wine/crossover or appel gameportingkit enable the wine-option
 
 Also remember to configure a "Center" Keyboard Binding in opentrack's Options. You'll need it. Tweak the mappings and so on. Have fun.
 
@@ -60,39 +61,37 @@ Open a Terminal:
 
     sudo port -N install cmake qt5 opencv4 libomp create-dmg ImageMagick libunwind
 
-    # ON INTEL:
-    # 1) also install
-    	#sudo port -N install clang-18 llvm-18
-     	#sudo port select --set clang mp-clang-18
-    # 2) add the following to the cmake call below
-    # 	-DCMAKE_C_COMPILER=/opt/local/bin/clang -DCMAKE_CXX_COMPILER=/opt/local/bin/clang++
-    # 3) Remove the "-Xclang" bits
+    
+    # becuase of picky openmp we need to install and use non-Apple clang
+    sudo port -N install clang-18
+    sudo port select --set clang mp-clang-18
 
-    # For WINE integration you'll need to have to install the 'dev' variant of wine
-    # and then add the -DSDK_WINE=1 option
-    # sudo port install wine-stable +dev
-    # Also in the final product the third-party files from the dmg-image need to be copied into
-    # opentrack.app/Contents/MacOS/PlugIns/
+    # For WINE integration you'll need to have to install the 'dev' variant of wine (sudo port install wine-stable +dev)
+    # and then add the -DSDK_WINE=1 option. To skip the time consuming installation of wine dev
+    # also add -DPREBUILT_MACOS_WINE_WRAPPER=1 to use a prebuilt version (wine-stable 9.0)
+
     
     cd ~/Desktop/opentrack
     
     cmake \
 	-DCMAKE_BUILD_TYPE=RELEASE \
+ 	-DCMAKE_C_COMPILER=/opt/local/bin/clang -DCMAKE_CXX_COMPILER=/opt/local/bin/clang++ \
 	-DOpenCV_DIR=/opt/local/libexec/opencv4/cmake \
 	-DONNXRuntime_LIBRARY=~/Desktop/onnxruntime-osx-universal2-1.17.3/lib/libonnxruntime.dylib \
 	-DONNXRuntime_INCLUDE_DIR=~/Desktop/onnxruntime-osx-universal2-1.17.3/include \
-	-DOpenMP_CXX_FLAG="-Xlang -fopenmp" \
+	-DOpenMP_CXX_FLAG="-fopenmp" \
 	-DOpenMP_CXX_INCLUDE_DIR=/opt/local/include/libomp \
 	-DOpenMP_CXX_LIB_NAMES=libomp \
-	-DOpenMP_C_FLAG="-Xlang -fopenmp" \
+	-DOpenMP_C_FLAG="-fopenmp" \
 	-DOpenMP_C_INCLUDE_DIR=/opt/local/include/libomp \
 	-DOpenMP_C_LIB_NAMES=libomp \
 	-DOpenMP_libomp_LIBRARY=/opt/local/lib/libomp/libomp.dylib \
 	-DSDK_XPLANE=~/Desktop/SDK \
+ 	-DSDK_WINE=1 \
 	-S . -B build --toolchain cmake/apple.cmake
     
     cd build
-    make install
+    make -j5 install
     
     # on INTEL switch bach to default compiler:
     # sudo port select --set clang none
