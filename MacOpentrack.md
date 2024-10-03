@@ -64,7 +64,6 @@ Open a Terminal:
     # 1) also install
     	#sudo port -N install clang-18 llvm-18
      	#sudo port select --set clang mp-clang-18
-	#sudo port select --set llvm mp-llvm-18
     # 2) add the following to the cmake call below
     # 	-DCMAKE_C_COMPILER=/opt/local/bin/clang -DCMAKE_CXX_COMPILER=/opt/local/bin/clang++
     # 3) Remove the "-Xclang" bits
@@ -97,7 +96,6 @@ Open a Terminal:
     
     # on INTEL switch bach to default compiler:
     # sudo port select --set clang none
-    # sudo port select --set llvm none
 
 Have a cup of tea.
 
