@@ -16,7 +16,8 @@ You then have to decide what input method you want to use.
 1. In case you have a IR-camera and a IR-Reflector or LED-HeadClip (recommended) use PointTracker.
 2. If you have a FaceTime-Camera or regular WebCam - or even an iPhone choose Neuralnet-Tracker. This will track your face.
 3. If you want to use the iOS or Android App like Smoothtrack choose "UDP over network". Configure smoothtrack to send data to your computers ip-address.
-4. If you want to feed motion data into a game that's run via wine/crossover or appel gameportingkit enable the wine-option
+   
+If you want to feed motion data into a game that's run via wine/crossover or apple's gameportingkit choose the Wine/X-Plabe output and enable the wine-option in its options dialog.
 
 Also remember to configure a "Center" Keyboard Binding in opentrack's Options. You'll need it. Tweak the mappings and so on. Have fun.
 
