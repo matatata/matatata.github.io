@@ -56,7 +56,7 @@ Open a Terminal:
     
     sudo port selfupdate
     
-    # SKIP this if on INTEL
+    # SKIP this if you build for x86_64
     export OTR_OSX_ARCH=arm64
 
     sudo port -N install cmake qt5 opencv4 libomp create-dmg ImageMagick libunwind
@@ -93,7 +93,7 @@ Open a Terminal:
     cd build
     make -j5 install
     
-    # on INTEL switch bach to default compiler:
+    # switch back to default compiler:
     # sudo port select --set clang none
 
 Have a cup of tea.
