@@ -6,7 +6,7 @@
 
 ## Prebuilt (unsigned) binaries
 
-Get them [https://github.com/matatata/opentrack/releases](here)
+Get them [https://github.com/matatata/opentrack/releases](https://github.com/matatata/opentrack/releases)
 
 ## General notes on Headtracking with X-Plane on macOS with or without using opentrack
 
