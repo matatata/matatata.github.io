@@ -99,17 +99,6 @@ Open a Terminal:
 Have a cup of tea.
 
 --------------
-2024.1.1: on INTEL I get the error ERROR: Cannot resolve rpath "@rpath/libunwind.1.dylib" which will stop tacker-neuralnet from showing up in the list. You can fix it by this:
-
-    cp /opt/local/lib/libunwind.1.dylib install/opentrack.app/Contents/Frameworks/
-
-or perhaps even better: add this to opentrack/macosx/make-app-bundle.sh after the line starting with macdeployqt
-
-    cp /opt/local/lib/libunwind.1.dylib $install/$APPNAME.app/Contents/Frameworks/
-
-and call `make install` again
-
---------------
 
         
 If everything went fine You'll now see the opentrack.app in ~/Desktop/opentrack/build/install. You'll also find a .dmg-File in ~/Desktop/build/. If you open the opentrack.app directly from the install-Folder it probably crashes on Apple-Silicon with some nasty warning/error.
