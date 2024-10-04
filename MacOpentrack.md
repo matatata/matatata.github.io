@@ -1,8 +1,6 @@
 # matatata's notes on building and using opentrack on macOS
 
-**Including PointTracker, NeuralNet(Face)Tracker and xplane-plugin**
-
-*Tested on Sonoma 14.6, Opentrack 2024.1.1*
+*Tested on Sonoma 14.6.1, Opentrack 2024.1.1*
 
 ## Prebuilt (unsigned) binaries
 
