@@ -7,7 +7,7 @@
 Get them [https://github.com/matatata/opentrack/releases](https://github.com/matatata/opentrack/releases)
 
 ### Bugs
-- Camera-Selection https://github.com/opencv/opencv/issues/22901
+- Camera-Selection is totally confused when you have more than one camera. This related to https://github.com/opencv/opencv/issues/22901 and mainly because opencv does not allow you to simply enumerate devices https://github.com/opencv/opencv/issues/4269
 - No Camera-Settings Dialog
 
 ## General notes on Headtracking with X-Plane on macOS with or without using opentrack
