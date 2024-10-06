@@ -7,8 +7,8 @@
 Get them [https://github.com/matatata/opentrack/releases](https://github.com/matatata/opentrack/releases)
 
 ### Bugs
-- Camera-Selection is totally confused when you have more than one camera. This related to https://github.com/opencv/opencv/issues/22901 and mainly because opencv does not allow you to simply enumerate devices https://github.com/opencv/opencv/issues/4269. Run with environment variable OPENCV_VIDEOIO_DEBUG=1 and you'll see that Opentrack uses a different enumeration than opencv. Opentrack uses QTCamera, but opencv AVFoundation
-- No Camera-Settings Dialog
+- Camera-Selection is totally confused when you have more than one camera. This related to https://github.com/opencv/opencv/issues/22901 and mainly because opencv does not allow you to simply enumerate devices https://github.com/opencv/opencv/issues/4269. Run with environment variable OPENCV_VIDEOIO_DEBUG=1 and you'll see that Opentrack uses a different enumeration than opencv. Opentrack uses QTCamera, but opencv AVFoundation. I'll fix that.
+- No Camera-Settings Dialog (won't fix)
 
 ## General notes on Headtracking with X-Plane on macOS with or without using opentrack
 
