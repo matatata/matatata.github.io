@@ -71,7 +71,7 @@ Open a Terminal:
 
     # For WINE integration you'll need to have to install the 'dev' variant of wine (sudo port install wine-stable +dev)
     # and then add the -DSDK_WINE=1 option. To skip the time consuming installation of wine dev
-    # also add -DPREBUILT_MACOS_WINE_WRAPPER=1 to use a prebuilt version (wine-stable 9.0)
+    # also add -DPREBUILT_WINE_WRAPPER_LOCATION=/path/where/thefileis to use a prebuilt opentrack-wrapper-wine.exe.so.
 
     
     cd ~/Desktop/opentrack
