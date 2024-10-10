@@ -32,8 +32,7 @@ Installing unsigned X-Plane plugins often requires removing the qurantine flags 
 ## Building opentrack yourself
 Note that the binaries I built use the original source code, but you'll have to trust me that I did not alter it. I encourage you to build the software yourself yet I still recommend to clone my [fork](https://github.com/matatata/opentrack) since I made some small tweaks so that the build actually works with the instructions I give. But please go ahead and review the [differences](https://github.com/opentrack/opentrack/compare/master...matatata:opentrack:master) between my fork and the original [repo](https://github.com/opentrack/opentrack) if there are any.
 
-First install https://www.macports.org for your architecture (Intel or arm64), I did not get it to work with homebrew.
-If you use homebrew, it may be necessary to temporarily comment out (#) the line that read something like this: `eval "$(/opt/homebrew/bin/brew shellenv)"` in case you have it in your ~/.zprofile or ~/.bash_profile file.
+First install https://www.macports.org for your architecture (Intel or arm64) (version >= 2.10.3 because of a bug https://trac.macports.org/ticket/71052). I did not get it to work with homebrew, but there's a contribution in this PR: https://github.com/matatata/opentrack/pull/1 . I probably won't be able to maintain both build system so I'll stick with macports for now.
 
 Open a Terminal:
 
@@ -53,16 +52,12 @@ Open a Terminal:
 
     git clone https://github.com/matatata/opentrack.git
 
-    
-
-    export PATH=$PATH:/opt/local/bin:/opt/local/libexec/qt5/bin
-    
     sudo port selfupdate
     
     # SKIP this if you build for x86_64
     export OTR_OSX_ARCH=arm64
 
-    sudo port -N install cmake qt5 opencv4 libomp create-dmg ImageMagick libunwind
+    sudo port -N install cmake qt5 opencv4 libomp create-dmg ImageMagick
 
     
     # becuase of picky openmp we need to install and use non-Apple clang
@@ -73,7 +68,7 @@ Open a Terminal:
     # and then add the -DSDK_WINE=1 option. To skip the time consuming installation of wine dev
     # also add -DPREBUILT_WINE_WRAPPER_LOCATION=/path/where/thefileis to use a prebuilt opentrack-wrapper-wine.exe.so.
 
-    
+    export PATH=$PATH:/opt/local/bin:/opt/local/libexec/qt5/bin
     cd ~/Desktop/opentrack
     
     cmake \
@@ -91,7 +86,7 @@ Open a Terminal:
 	-DOpenMP_libomp_LIBRARY=/opt/local/lib/libomp/libomp.dylib \
 	-DSDK_XPLANE=~/Desktop/SDK \
  	-DSDK_WINE=1 \
-	-S . -B build --toolchain cmake/apple.cmake
+	-S . -B build_x86_64 --toolchain cmake/apple.cmake
     
     cd build
     make -j5 install
