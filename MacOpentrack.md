@@ -4,7 +4,7 @@ By matatata - October 2024
 # Introduction
 In this document I'm describing how I was able to take full advantage of my [Delanclip Fusion Pro](https://delanclip.com/product/delanclip-fusion-pro/) on macOS despite the fact that it's currently not officially supported (I've been using it on Windows and it's working perfectly by the way). These are the problems I had to overcome on macOS:
 
-1. When I was looking on it there were no official binaries of the [Opentrack](https://github.com/opentrack/opentrack) application available for macOS. There were builds around on the internet but they were very old and lacking important features.
+1. When I was looking for it there were no official binaries of the [Opentrack](https://github.com/opentrack/opentrack) application available for macOS. There were builds around on the internet but they were very old and lacking important features.
 2. Luckily Opentrack is opensource software and I was able to build a basic version of it myself. Getting the most important features to work however was a steep [learning curve](BuildOpentrack.md).
 3. Once up and running I noticed several problems in the macOS version which I had to fix before it really became useable.
 4. Although the *Delan Cam 1* camera is recognized by macOS out of the box it did not perform well initially. I found out that when connecting it to a Mac the initial exposure time settings are not ideal rendering it unusable for IR-Tracking. But once the settings are correct it performs very well. I've created a little utitily called [DelanCamUtil](https://github.com/matatata/delancamutil) that will put the camera it the correct state.
@@ -14,11 +14,11 @@ I've now come to a point where things have really become useable and enjoyable s
 
 ## Setup "Delan Cam 1" for IR-Tracking
 
-If you connect *Delan Cam 1* to a Mac it will not perform optimally on macOS like it does on Windows out of the box. I invite you to get the latest release of my [DelanCamUtil](https://github.com/matatata/delancamutil) to fix that. Copy the app to your Applications folder or wherever you like. Open it - again following the procedure to tame macOS's Gatekeeper. In the system's menu bar on the right you'll then notice a little icon with three dots in the middle. It will be solid (like shown in the picture below) if a *Delan Cam 1* camera is connected. It'll be hollow otherwise.
+If you connect *Delan Cam 1* to a Mac it will not perform optimally on macOS like it does on Windows out of the box. I invite you to get the latest release of my [DelanCamUtil](https://github.com/matatata/delancamutil) to fix that. Copy the app to your Applications folder or wherever you like and open it. In the system's menu bar on the right you'll then notice a little icon with three dots in the middle. It will be solid (like shown in the picture below) if a *Delan Cam 1* camera is connected. It'll be hollow otherwise.
 
 ![](camutil1.png)
 
-The app is leightweight and it actually does nothing but react if a *Delan Cam 1* camera is plugged in. It will then try to apply the recommended setting so that the camera performs optimally. It'll also do that when the app starts and the camera is already connected.
+The app is lightweight and it actually does nothing but react if a *Delan Cam 1* camera is plugged in. It will then try to apply the recommended setting so that the camera performs optimally. It'll also do that when the app starts and the camera is already connected.
 
 If you have reason to believe the app may have failed to set the camera's settings then you can manually apply the settings via the "Reapply camera settings now" menu item. Also note that the settings will not persist if you reconnect the camera or restart your computer. So its mandatory to have the app applies the settings at least once before you want to use the camera for IR-Tracking. Some users have added the app to their startup item list so they need not to worry about it anymore. Here's my "Login Items" section of macOS System Settings:
 
@@ -143,7 +143,7 @@ Also the *Mapping* configuration window is a very powerful and improtant tool an
 Look for other documentaton on opentrack - most of it should be applicable to Opentrack on macOS as well.
 
 ## Thanks
-Thanks to cavu360 and AnthonyFracis who were helping me test all of this at the [X-Plane Forums](https://forums.x-plane.org/index.php?/forums/topic/292575-mac-silicon-head-tracking/). I'm not afiliated with DelanClip but I'm truly fond of their products and happy that the hardware happens to work on macOS too. So thanks for that! Last but not least many thanks to the developers of Opentrack!
+Thanks to cavu360 and AnthonyFracis for theri support and help at the [X-Plane Forums](https://forums.x-plane.org/index.php?/forums/topic/292575-mac-silicon-head-tracking/). I'm not afiliated with DelanClip but I'm truly fond of their products and happy that the hardware happens to work on macOS too. So thanks for that! Last but not least many thanks to the developers of Opentrack!
 
 
 
