@@ -5,16 +5,16 @@ By matatata - October 2024
 In this document I'm describing how I was able to take full advantage of my [Delanclip Fusion Pro](https://delanclip.com/product/delanclip-fusion-pro/) on macOS despite the fact that it's currently not officially supported (I've been using it on Windows and it's working perfectly by the way). These are the problems I had to overcome on macOS:
 
 1. When I was looking for it there were no official binaries of the [Opentrack](https://github.com/opentrack/opentrack) application available for macOS. There were builds around on the internet but they were very old and lacking important features.
-2. Luckily Opentrack is opensource software and I was able to build a basic version of it myself. Getting the most important features to work however was a steep [learning curve](BuildOpentrack.md).
+2. Luckily Opentrack is opensource software and I was able to build a basic version of it myself. Getting the most important features to work as well however was a steep and extremely time consuming learning curve.
 3. Once up and running I noticed several problems in the macOS version which I had to fix before it really became useable.
-4. Although the *Delan Cam 1* camera is recognized by macOS out of the box it did not perform well initially. I found out that when connecting it to a Mac the initial exposure time settings are not ideal rendering it unusable for IR-Tracking. But once the settings are correct it performs very well. I've created a little utitily called [DelanCamUtil](https://github.com/matatata/delancamutil) that will put the camera it the correct state.
+4. Although the *Delan Cam 1* camera is recognized by macOS out of the box it did not perform well initially. I found out that when connecting it to a Mac the initial exposure time settings are not ideal rendering it unusable for IR-Tracking. But once the settings are correct it performs very well. I've created a little utitily called [DelanCamUtil](https://matatata.gumroad.com/l/delancamutil) that will put the camera it the correct state.
 5. The opentrack plugin for x-plane needed some improvements and compatibitlity with X-Camera was requested on the X-Plane forums very often.
 
 I've now come to a point where things have really become useable and enjoyable so I'd like to share this information with the public:
 
 ## Setup "Delan Cam 1" for IR-Tracking
 
-If you connect *Delan Cam 1* to a Mac it will not perform optimally on macOS like it does on Windows out of the box. I invite you to get the latest release of my [DelanCamUtil](https://github.com/matatata/delancamutil) to fix that. Copy the app to your Applications folder or wherever you like and open it. In the system's menu bar on the right you'll then notice a little icon with three dots in the middle. It will be solid (like shown in the picture below) if a *Delan Cam 1* camera is connected. It'll be hollow otherwise.
+If you connect *Delan Cam 1* to a Mac it will not perform optimally on macOS like it does on Windows out of the box. Get the latest release of my [DelanCamUtil](https://matatata.gumroad.com/l/delancamutil) to fix that. Copy the app to your Applications folder or wherever you like and open it. In the system's menu bar on the right you'll then notice a little icon with three dots in the middle. It will be solid (like shown in the picture below) if a *Delan Cam 1* camera is connected. It'll be hollow otherwise.
 
 ![](camutil1.png)
 
@@ -25,21 +25,10 @@ If you have reason to believe the app may have failed to set the camera's settin
 ![](loginitem.png)
 
 ## Setup Opentrack
-Opentrack is an opensource program capable of tracking your head's movement and get the movement data into your simulator or game. Download my latest builds from [Github](https://github.com/matatata/Opentrack/releases). Choose the .dmg file that fits your platform. `x86_64` is for older Intel-Macs whereas everything else is optimized for Apple-Silicon. Open the disk image and copy the app to your Applications folder or wherever you like.
+Opentrack is an opensource program capable of tracking your head's movement and get the movement data into your simulator or game. Get my latest builds of [MacOpentrack](https://matatata.gumroad.com/l/macopentrack). Choose the .dmg file that fits your platform. `x86_64` is for older Intel-Macs whereas everything else is optimized for Apple-Silicon. Open the disk image and copy the app to your Applications folder or wherever you like.
 ![](dmg.png)
-If you open it the first time macOS' Gatekeeper will not allow you to run it - which is a good thing in general. But since I was not yet able to convince myself to pay Apple 99$ a year just to sign the binaries you'll basically have to trust the original author's source code and my work. You're welcome to review my [fork](https://github.com/matatata/Opentrack) and build the software yourself. You might be already familiar with the process of dealing with unsigned software by unidentified developers so you can skip some sections of this document.
 
-Dismiss the dialog by clicking OK
-
-![](gate.png)
-
-In the *Privacy & Security* section of macOS' System Settings you should now be able to make an exception and open the application anyway:
-
-![](sec.png)
-
-macOS will warn you once more and if you really trust the software click *Open*:
-
-![](gate2.png)
+Note that I don't provide pre-built binaries directly at [my fork of opentrack on GitHub](https://github.com/matatata/opentrack). I offer code-signed and apple-notarised binaries at my [Gumroad-page](https://matatata.gumroad.com) allowing you to also support me financially. Of course you're welcome to build the software yourself as I make all my code changes available.
 
 macOS might now ask you if Opentrack is allowed to access your Documents folder:
 <img src="sec_docs.png"  width="50%"/>
@@ -98,17 +87,7 @@ Most trackers will have an option to calibrate the model and so does the PointTr
 ## Setup X-Plane
 
 ### Installing the X-Plane-Plugin
-To make X-Plane receive the motion data from Opentrack you have to install a plugin that you'll find in the folder *Xplane-Plugin* on the disk image where you also did find Opentrack. The plugin only consists of a file name `opentrack_arm64.xpl` or `opentrack_x86_64.xpl` depending on which platform you have chosen. On an older intel-Mac you'll want the x86_64 file. Copy the file into path/to/X-Plane/Resources/plugins/. If you start X-Plane macOS's Gatekeeper will again pop up:
-
-<img src="gate3.png" width="50%"/>
-
-Hit cancel and as we did before look at the "Privacy & Security" section in the System Settings and click *Allow Anyway*.
-
-![](gate4.png)
-
-You might have to perform this procedure twice or more until macOS shuts up. Now restart X-Plane. You'll be asked asked one last time whether you really want to open the plugin and yes, you should:
-
-<img src="gate5.png" width="50%"/>
+To make X-Plane receive the motion data from Opentrack you have to install a plugin that you'll find in the folder *Xplane-Plugin* on the disk image where you also did find Opentrack. The plugin only consists of a file name `opentrack_arm64.xpl` or `opentrack_x86_64.xpl` depending on which platform you have chosen. On an older intel-Mac you'll want the x86_64 file. Copy the file into path/to/X-Plane/Resources/plugins/.
 
 Note that on an Apple-Silicon you might be using X-Plane in intel- aka Rosetta-mode so that you can use airplanes that are not yet optimized for Apple-Silicon. In this case also download the x86_64 *.dmg disk image and copy the intel version of the Opentrack plugin to X-Plane's plugin folder as well. You'll have to perform the Gatekeeper game for it too.
 
@@ -142,8 +121,9 @@ Also the *Mapping* configuration window is a very powerful and improtant tool an
 
 Look for other documentaton on opentrack - most of it should be applicable to Opentrack on macOS as well.
 
-## Thanks
-Thanks to cavu360 and AnthonyFracis for theri support and help at the [X-Plane Forums](https://forums.x-plane.org/index.php?/forums/topic/292575-mac-silicon-head-tracking/). I'm not afiliated with DelanClip but I'm truly fond of their products and happy that the hardware happens to work on macOS too. So thanks for that! Last but not least many thanks to the developers of Opentrack!
+## Thanks and final words
+Many thanks to cavu360 and AnthonyFracis for their generous support and help at the [X-Plane Forums](https://forums.x-plane.org/index.php?/forums/topic/292575-mac-silicon-head-tracking/). I'm not afiliated with DelanClip but I'm a happy customer of their products and glad that I the hardware can be made to work on macOS as well. Last but not least many thanks to the developers of Opentrack!
 
+I hope you'll understand that I've decided to now distribute the DelanCamUtil and my macOS builds of Opentrack on Gumroad offering you a conventient opportunity to support me fainancially. Without it I won't be able to continue keeping them up to date. Being able to code-signe and have apple notarise the software alone costs me 99$ per year.
 
 
