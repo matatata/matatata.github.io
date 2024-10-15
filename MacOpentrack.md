@@ -122,8 +122,8 @@ Also the *Mapping* configuration window is a very powerful and improtant tool an
 Look for other documentaton on opentrack - most of it should be applicable to Opentrack on macOS as well.
 
 ## Thanks and final words
-Many thanks to cavu360 and AnthonyFracis for their generous support and help at the [X-Plane Forums](https://forums.x-plane.org/index.php?/forums/topic/292575-mac-silicon-head-tracking/). I'm not afiliated with DelanClip but I'm a happy customer of their products and glad that I the hardware can be made to work on macOS as well. Last but not least many thanks to the developers of Opentrack!
+Many thanks to cavu360 and AnthonyFracis for their generous support and help at the [X-Plane Forums](https://forums.x-plane.org/index.php?/forums/topic/292575-mac-silicon-head-tracking/). Last but not least many thanks to the developers of Opentrack!
 
-I hope you'll understand that I've decided to now distribute the DelanCamUtil and my macOS builds of Opentrack on Gumroad offering you a conventient opportunity to support me fainancially. Without it I won't be able to continue keeping them up to date. Being able to code-signe and have apple notarise the software alone costs me 99$ per year.
+Update: As of 15th October 2024 DelanEngineering's Tomasz is now supporting my work - so that opentrack and DelanClipUtil will stay up to date and available for his macOS customers. He also created [this link that gets you a 5 % discount](https://delanclip.com/shop/?a=tomatec) on your purchase if you decide to go with the a Delan Cam 1 IR-Tracking product.
 
 
