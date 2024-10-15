@@ -1,5 +1,5 @@
 # IR Head-Tracking with X-Plane or Wine on macOS using Opentrack and DelanClip
-By matatata - October 2024
+By matatata - October 10th 2024
 
 # Introduction
 In this document I'm describing how I was able to take full advantage of my [DelanClip](https://delanclip.com/shop/?a=tomatec) Fusion Pro on macOS despite the fact that it's currently not officially supported (I've been using it on Windows and it's working perfectly by the way). These are the problems I had to overcome on macOS:
@@ -124,6 +124,6 @@ Look for other documentaton on opentrack - most of it should be applicable to Op
 ## Thanks and final words
 Many thanks to cavu360 and AnthonyFracis for their generous support and help at the [X-Plane Forum](https://forums.x-plane.org/index.php?/forums/topic/292575-mac-silicon-head-tracking/&do=findComment&comment=2783235). Last but not least many thanks to the developers of Opentrack!
 
-Update: As of 15th October 2024 DelanEngineering's Tomasz is now supporting my work - so that opentrack and DelanClipUtil will stay up to date and available for his macOS customers. He also created [this link that gets you a 5 % discount](https://delanclip.com/shop/?a=tomatec) on the DelanClip shop.
+Update: As of October, 15th 2024 DelanEngineering's Tomasz is now supporting my work - so that opentrack and DelanClipUtil will stay up to date and available for his macOS customers. He also created [this link that gets you a 5 % discount](https://delanclip.com/shop/?a=tomatec) on the DelanClip shop.
 
 
