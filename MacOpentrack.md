@@ -2,7 +2,7 @@
 By matatata - October 2024
 
 # Introduction
-In this document I'm describing how I was able to take full advantage of my [Delanclip Fusion Pro](https://delanclip.com/product/delanclip-fusion-pro/) on macOS despite the fact that it's currently not officially supported (I've been using it on Windows and it's working perfectly by the way). These are the problems I had to overcome on macOS:
+In this document I'm describing how I was able to take full advantage of my [DelanClip](https://delanclip.com/shop/?a=tomatec) Fusion Pro on macOS despite the fact that it's currently not officially supported (I've been using it on Windows and it's working perfectly by the way). These are the problems I had to overcome on macOS:
 
 1. When I was looking for it there were no official binaries of the [Opentrack](https://github.com/opentrack/opentrack) application available for macOS. There were builds around on the internet but they were very old and lacking important features.
 2. Luckily Opentrack is opensource software and I was able to build a basic version of it myself. Getting the most important features to work as well however was a steep and extremely time consuming learning curve.
