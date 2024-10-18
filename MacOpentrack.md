@@ -8,6 +8,6 @@ In the last year I've been investing quite a lot of time in bringing [opentrack]
 
 I've made the code changes available in [my fork](https://github.com/matatata/opentrack). Some have already been merged to the original codebase.
 
-I now provide codesigned and apple-notarised [pre-built binaries](https://matatata.gumroad.com/l/macopentrack) via gumroad allowing you to supporting my work.
+I now provide codesigned and apple-notarised [pre-built binaries](https://matatata.gumroad.com/l/macopentrack) via gumroad allowing you to support my work.
 
 I've also published a [detailed guide](https://delanclip.com/ir-head-tracking-macos-opentrack-delanclip/) about how proper IR-Head-Tracking is now possible on macOS using DelanClips products.
