@@ -10,4 +10,4 @@ I've made the code changes available in [my fork](https://github.com/matatata/op
 
 I now provide codesigned and apple-notarised [pre-built binaries](https://matatata.gumroad.com/l/macopentrack) via gumroad allowing you to support my work.
 
-I've also published a [detailed guide](https://delanclip.com/ir-head-tracking-macos-opentrack-delanclip/) about how proper IR-Head-Tracking is now possible on macOS using products by DelanClip. It performs much much better than any facetracking solution you might have looked into in the past. Get a [5% discpount using this link](https://delanclip.com/?a=tomatec).
+I've also published a [detailed guide](https://delanclip.com/ir-head-tracking-macos-opentrack-delanclip/) about how proper IR-Head-Tracking is now possible on macOS using products by DelanClip. It performs much much better than any facetracking solution you might have looked into in the past. Get a [5% discount using this link](https://delanclip.com/?a=tomatec).
