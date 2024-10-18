@@ -4,7 +4,7 @@ In the last year I've been investing quite a lot of time in bringing [opentrack]
 - Binding key commands was not working properly
 - If you had more than one camera connected, a tracker would most of the time not use the one you've selected.
 - The X-Plane plugin is now compatible with X-Camera and features a menu that helps you to monitor and control its state.
-- I'va made a modification to the output method which was either called X-Plane or Wine depending how you built it from source. I wanted to be able to use choose between relaying the headpose to a windows-game via [Wine](https://www.winehq.org)) or to the X-Plane plugin. That's possible now.
+- I'va made a modification to the output method which was either called X-Plane or Wine depending how you built it from source. I wanted to be able to use choose between relaying the headpose to a windows-game via [Wine](https://www.winehq.org) or to the X-Plane plugin. That's possible now.
 
 I've made the code changes available in [my fork](https://github.com/matatata/opentrack). Some have already been merged to the original codebase.
 
