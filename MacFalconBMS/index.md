@@ -1,6 +1,6 @@
 # Falcon 4.37 and Weapon Delivery Planner on MacOS
 
-This is how I can fly Falcon BMS and use WeaponDeliveryPlanner on Intel and Apple Silicon Macs. As far as I can tell everything works pretty well. Even networking and IVC voice comms do work. It's even possible to use Headtracking via [MacOpentrack](MacOpentrack.md) which I also maintain, but that's out of scope of this document.
+This is how I can fly Falcon BMS and use WeaponDeliveryPlanner on Intel and Apple Silicon Macs. As far as I can tell everything works pretty well. Even networking and IVC voice comms do work. It's even possible to use Headtracking via [MacOpentrack](../MacOpentrack.md) which I also maintain, but that's out of scope of this document.
 
 I'm not installing Falcon into the virtual drive "C:" but into a shared virtual drive "D:". This is necessary to be able to use tools such as Weapon-Delivery-Planner (WPD). This may change in future but for now this is required due to .NET incompatibilities. If you don't plan to use WPD or want to get to know Falcon BMS first, you may skip and simply some steps and install directly to the drive "C:".
 
