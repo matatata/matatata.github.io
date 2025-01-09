@@ -27,7 +27,7 @@ Because I want to use WeaponDeliveryPlanner (which you probably will eventually)
 
 Let's create the wine prefix for Falcon BMS and configure a drive "D" pointing tofrom above `~/Wine/shared_drive_d` via `WINEPREFIX=~/Wine/BMS winefcg`:
 
-![](@attachment/Clipboard_2025-01-08-12-02-11.png)
+![](Clipboard_2025-01-08-12-02-11.png)
 
 Install Falcon 4.0 (I got it from GOG.com, it's included in Falcon-3 as hidden asset). Choose Options and Install into drive "D:" D:\Falcon 4.0 e.g.
 
@@ -77,7 +77,7 @@ Back to BMS install DXVK
     cp -v ~/Downloads/dxvk-macOS-async-*/x32/*.dll ~/Wine/BMS/drive_c/windows/syswow64
 
 Now configure DLL overrides for d3d11 and d3d10core via `WINEPREFIX=~/Wine/BMS winecfg`:
-![](@attachment/Clipboard_2025-01-08-12-06-42.png)
+![](Clipboard_2025-01-08-12-06-42.png)
 
 I found that the Falcon BMS Alternative Launcher works better with newer wine-mono versions than the stock 8.1, so I alsways install at least 9.2.0.
 
