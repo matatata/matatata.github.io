@@ -1,5 +1,5 @@
 # MacOpentrack
-In the last year I've been investing quite a lot of time in bringing [opentrack](https://guthub.com/opentrack/opentrack) back to the Mac:
+In the last year I've been investing quite a lot of time in bringing [opentrack](https://github.com/opentrack/opentrack) back to the Mac:
 
 - Binding key commands was not working properly
 - If you had more than one camera connected, a tracker would most of the time not use the one you've selected.
