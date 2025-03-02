@@ -12,7 +12,7 @@ Tested with
 - WeaponDeliveryPlanner 3.7.24.232
 - Sony PS5 Controller via Bluetooth or USB
 
-**Match 2nd 2025**: wine-stable 10.0 installed via brew works as well. Did not try WPDP yet. I recommend installing via brew as I get more more FPS from it.
+**Maech 2nd 2025**: wine-stable 10.0 installed via brew works as well. Did not try WDP yet. I recommend installing via brew as I get more more FPS from it.
 
 ## Install Wine (stable 9.0.3 now it's 10.0)
 Using homebrew (recommended) `brew install --cask --no-quarantine wine-stable winetricks`
