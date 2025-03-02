@@ -1,8 +1,8 @@
 # Falcon 4.37 and Weapon Delivery Planner on MacOS
 
-This is how I can fly Falcon BMS and use WeaponDeliveryPlanner on Intel and Apple Silicon Macs. As far as I can tell everything works pretty well. Even networking and IVC voice comms do work. It's even possible to use Headtracking via [MacOpentrack](../MacOpentrack.md) which I also maintain, but that's out of scope of this document.
+This is how I can fly Falcon BMS and use WeaponDeliveryPlanner on Intel and Apple Silicon Macs. As far as I can tell everything works pretty well. Even networking and IVC voice comms do work. It's even possible to use Headtracking via [MacOpentrack](../MacOpentrack.md) which I also maintain (see a short information about using it with wine at the very bottom).
 
-I'm not installing Falcon into the virtual drive "C:" but into a shared virtual drive "D:". This is necessary to be able to use tools such as Weapon-Delivery-Planner (WPD). This may change in future but for now this is required due to .NET problems: I found that the FalconBMS-Alternative-Launcher only works with with wine-mono whereas WDP needs a real .NET 4.8. If you don't plan to use WPD or want to get to know Falcon BMS first, you may skip and simply some steps and install directly to the drive "C:".
+I'm not installing Falcon into the virtual drive "C:" but into a shared virtual drive "D:". This is necessary to be able to use tools such as Weapon-Delivery-Planner (WPD). This may change in future but for now this is required due to .NET problems: I found that the FalconBMS-Alternative-Launcher only works with with wine-mono whereas WDP needs a real .NET 4.8. If you don't plan to use WPD or want to get to know Falcon BMS first, you may skip some steps and install directly to the drive "C:" in one single wine prefix.
 
 Tested with
 - Falcon 4.37.6
@@ -12,8 +12,10 @@ Tested with
 - WeaponDeliveryPlanner 3.7.24.232
 - Sony PS5 Controller via Bluetooth or USB
 
-## Install Wine (stable 9.0.3)
-Using homebrew `brew install --cask --no-quarantine wine-stable winetricks`
+**Match 2nd 2025**: wine-stable 10.0 installed via brew works as well. Did not try WPDP yet. I recommend installing via brew as I get more more FPS from it.
+
+## Install Wine (stable 9.0.3 now it's 10.0)
+Using homebrew (recommended) `brew install --cask --no-quarantine wine-stable winetricks`
 
 Or macports `sudo port install wine-stable winetricks` (but install the x86_64 architecture - not sure if this happens automatically).
 
@@ -134,4 +136,17 @@ Another reasonable thing to do would be creating a script file such as `startFal
 or individual ones, so that you simply can double-click them,
 
 Don't forget to make them .command files excecutable via `chmod a+x startFalconAndWDP.command`
+
+## Headtracking with Opentrack
+Once you have FalconBMS running you could use [MacOpentrack](../MacOpentrack.md) for headtracking. For that you'll have to configure the Wine/X-Plane output module to something like this:
+<img width="955" alt="image" src="https://github.com/user-attachments/assets/7c8d3655-17df-48de-a9d7-c57eeea6c536" />
+
+Then FalconBMS should pick up the motion data. If not try to hit ALT-C T to reinit tracking. Note that OpenTrack will add the path to a dll located inside the opentrack.app to the wine prefix' registry. That's how FalconBMS knows that headtracking is prsent. You can verify this yourself:
+
+     WINEPREFIX=~/Wine/BMS wine regedit
+     
+<img width="1289" alt="image" src="https://github.com/user-attachments/assets/5be2e71d-1ec7-4d8d-99b1-2e4bf6f4d32f" />
+
+If you do not want to use headtracking you'll have to manually remove that entry by right clicking that entry and chossing "delete".
+
 
