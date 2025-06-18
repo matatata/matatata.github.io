@@ -12,7 +12,8 @@ Tested with
 - WeaponDeliveryPlanner 3.7.24.232
 - Sony PS5 Controller via Bluetooth or USB
 
-**March 2nd 2025**: wine-stable 10.0 installed via brew works as well. Did not try WDP yet. I recommend installing via brew as I get more more FPS from it.
+**Update June 18th 2025**: I found that wine 10.* breaks things for me. Using an older crossover-wine 7.7 (https://github.com/Gcenx/winecx/releases/tag/crossover-wine-22.1.1) yields much better FPS. You'll have to set your path accordingly `export PATH=<path-to>/Wine\ Crossover.app/Contents/Resources/wine/bin/:$PATH`. I'll have to figure out what mono version is needed for the Launcher, but the game runs great using this crossover wine 7.7 version. Also [MacOpentrack](../MacOpentrack.md) works with it like wine 9 did. wine 10.x. does no longer work apparently.
+**Update March 2nd 2025**: wine-stable 10.0 installed via brew works as well. Did not try WDP yet. I recommend installing via brew as I get more more FPS from it.
 
 ## Install Wine (stable 9.0.3 now it's 10.0)
 Using homebrew (recommended) `brew install --cask --no-quarantine wine-stable winetricks`
