@@ -6,4 +6,30 @@ The problem apparently is very much related to the fact that `./configure` is ch
 
 On wine 9.0 the check apparently is not applied to the host-compiler and the build is a success (apart from various other problems I won't just write down just yet).
 
+## Wine 9.0.1 without macports
+
+I don't recall why but I used clang-mp-16 from macports
+
+Use something like
+`export MACOSX_DEPLOYMENT_TARGET=10.14`
+
+Maybe
+`LDFLAGS=-Wl,-rpath`
+
+Problems with identifiers named bool ... -std=gnu23
+
+Interesting now the CRT thing shows:
+
+clang-mp-16 -m64 -c -o dlls/ucrtbase/printf.o dlls/ucrtbase/printf.c -Idlls/ucrtbase -Idlls/msvcrt -Iinclude -Iinclude/msvcrt \
+  -D_UCRT -D__WINESRC__ -D_CRTIMP= -Wall -pipe -fcf-protection=none -fvisibility=hidden \
+  -fno-stack-protector -fno-strict-aliasing -Wdeclaration-after-statement -Wempty-body \
+  -Wignored-qualifiers -Winit-self -Wno-pragma-pack -Wstrict-prototypes -Wtype-limits \
+  -Wunused-but-set-parameter -Wvla -Wwrite-strings -Wpointer-arith -gdwarf-4 -fPIC \
+  -fasynchronous-unwind-tables -D_WIN32 -fno-builtin -fshort-wchar -Wno-format -mabi=ms -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0
+clang: warning: argument unused during compilation: '-mabi=ms' [-Wunused-command-line-argument]
+
+Interestingly printf is when I get crashes when executing a compiled exe.so
+
+
+
 
