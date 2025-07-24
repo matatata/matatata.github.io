@@ -8,6 +8,8 @@ On wine 9.0 the check apparently is not applied to the host-compiler and the bui
 
 ## Wine 9.0.1 without macports
 
+`./configure  --enable-win64 --disable-tests   --prefix=$HOME/mywine3 CC="clang-mp-16" CXX="clang++-mp-16"`
+
 I don't recall why but I used clang-mp-16 from macports
 
 Use something like
