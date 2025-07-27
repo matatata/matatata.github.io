@@ -37,11 +37,19 @@ Open a Terminal:
     # also add -DPREBUILT_WINE_WRAPPER_LOCATION=/directory/where/thefileis/ to use a prebuilt opentrack-wrapper-wine.exe.so.
 
     export PATH=$PATH:/opt/local/bin:/opt/local/libexec/qt5/bin
+    # For the OSC protocol clone this fork
+    cd ~/Desktop
+    git clone https://github.com/matatata/oscpack.git
+
+    cd ~/Desktop/oscpack
+    make install-local
+    
     cd ~/Desktop/opentrack
 
 Make sure following lines in cmake/apple.cmake are commented out and look like the following. I'd like to get rid of them comnpletely, but I'm not sure if this would break something it the github pipelines
 #set(OpenCV_DIR ~/dev/opentrack-depends/opencv/build)
 #set(Qt5_DIR ~/Qt5.6.0/5.6/clang_64/lib/cmake/Qt5)
+
     
     cmake \
 	-DCMAKE_BUILD_TYPE=RELEASE \
@@ -59,6 +67,7 @@ Make sure following lines in cmake/apple.cmake are commented out and look like t
 	-DSDK_XPLANE=~/Desktop/SDK \
  	-DSDK_WINE=1 \
   	-DPREBUILT_WINE_WRAPPER_LOCATION=/directory/where/thefileis/ \
+        -DSDK_OSCPACK=~/Desktop/oscpack/oscpack \
   	--toolchain cmake/apple.cmake \
 	-S . -B ../opentrack_build
     
