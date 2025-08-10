@@ -49,7 +49,7 @@ Open a Terminal:
 	# Best set this
  	export MACOSX_DEPLOYMENT_TARGET=14
 	# optionally set a SDKROOT	although not recommended by Apple
-	# exooier SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk    \
+	# export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk    \
  	
     
 	
