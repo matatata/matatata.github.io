@@ -46,9 +46,14 @@ Open a Terminal:
     
     cd ~/Desktop/opentrack
 
-	# optionally set a SDKROOT	
-	SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk    \
-    cmake \
+	# Best set this
+ 	export MACOSX_DEPLOYMENT_TARGET=14
+	# optionally set a SDKROOT	although not recommended by Apple
+	# exooier SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk    \
+ 	
+    
+	
+	cmake \
 	-DCMAKE_BUILD_TYPE=RELEASE \
  	-DCMAKE_C_COMPILER=/opt/local/bin/clang -DCMAKE_CXX_COMPILER=/opt/local/bin/clang++ \
 	-DOpenCV_DIR=/opt/local/libexec/opencv4/cmake \
