@@ -46,11 +46,8 @@ Open a Terminal:
     
     cd ~/Desktop/opentrack
 
-Make sure following lines in cmake/apple.cmake are commented out and look like the following. I'd like to get rid of them comnpletely, but I'm not sure if this would break something it the github pipelines
-#set(OpenCV_DIR ~/dev/opentrack-depends/opencv/build)
-#set(Qt5_DIR ~/Qt5.6.0/5.6/clang_64/lib/cmake/Qt5)
-
-    
+	# optionally set a SDKROOT	
+	SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk    \
     cmake \
 	-DCMAKE_BUILD_TYPE=RELEASE \
  	-DCMAKE_C_COMPILER=/opt/local/bin/clang -DCMAKE_CXX_COMPILER=/opt/local/bin/clang++ \
