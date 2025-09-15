@@ -20,10 +20,6 @@ Open a Terminal:
 	## choose the branch int this example I clone "develop" where I do most of the development but also experiments 
     git clone --single-branch --branch develop https://github.com/matatata/opentrack.git
 
-	# clone wine
-    git clone --single-branch --branch stable https://github.com/wine-mirror/wine.git
- 	
-
     sudo port selfupdate
     
     # SKIP this if you build for x86_64
@@ -36,9 +32,14 @@ Open a Terminal:
     sudo port -N install clang-19
     sudo port select --set clang mp-clang-19
 
-    # For WINE integration you'll need to have to install the 'dev' variant of wine (sudo port install wine-stable +dev)
+    # For LEGACY WINE integration you'll need to have to install the 'dev' variant of wine (sudo port install wine-stable +dev)
     # and then add the -DSDK_WINE=1 option. To skip the time consuming installation of wine dev
     # also add -DPREBUILT_WINE_WRAPPER_LOCATION=/directory/where/thefileis/ to use a prebuilt opentrack-wrapper-wine.exe.so.
+	# Note that since at least wine 10.x compiling winelibs is no longer supported on unix with clang, therefore I created a different
+	# solution. For that clone wine and set SDK_WINE_PATH accordingly:
+ 	# clone wine
+    git clone --single-branch --branch stable https://github.com/wine-mirror/wine.git
+ 	
 
  	# should not be necessary anymore
     # export PATH=$PATH:/opt/local/bin:/opt/local/libexec/qt5/bin
@@ -60,6 +61,7 @@ Open a Terminal:
 
 	# These are experimental old or deprecated (at least from my point of view)
     # -DSDK_OSCPACK=~/Desktop/oscpack/oscpack \
+	# -DSDK_WINE=1 \
 	
 	cmake \
 	-DCMAKE_BUILD_TYPE=RELEASE \
@@ -75,7 +77,6 @@ Open a Terminal:
 	-DOpenMP_C_LIB_NAMES=libomp \
 	-DOpenMP_libomp_LIBRARY=/opt/local/lib/libomp/libomp.dylib \
 	-DSDK_XPLANE=~/Desktop/SDK \
- 	-DSDK_WINE=1 \
     -DSDK_WINE_PATH=~/Desktop/wine \
   	--toolchain cmake/apple.cmake \
 	-S . -B ../opentrack_build
