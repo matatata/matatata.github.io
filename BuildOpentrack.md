@@ -17,15 +17,19 @@ Open a Terminal:
     # We also want to compile opentacks xplane-plugin which is very convenient and need to download the X-lane SDK. In this case for X-Plane 12. **For X-Plane 11 change the SDK version to 303, but note that you can only build for x86_64**
     curl -L http://developer.x-plane.com/wp-content/plugins/code-sample-generation/sdk_zip_files/XPSDK401.zip > XPSDK.zip
     unzip XPSDK.zip
+	## choose the branch int this example I clone "develop" where I do most of the development but also experiments 
+    git clone --single-branch --branch develop https://github.com/matatata/opentrack.git
 
-    git clone https://github.com/matatata/opentrack.git
+	# clone wine
+    git clone --single-branch --branch stable https://github.com/wine-mirror/wine.git
+ 	
 
     sudo port selfupdate
     
     # SKIP this if you build for x86_64
     export OTR_OSX_ARCH=arm64
 
-    sudo port -N install cmake qt5 opencv4 libomp create-dmg ImageMagick
+    sudo port -N install cmake qt6 opencv4 libomp create-dmg ImageMagick
 
     
     # becuase of picky openmp apparently we need to install and use non-Apple clang
@@ -36,13 +40,15 @@ Open a Terminal:
     # and then add the -DSDK_WINE=1 option. To skip the time consuming installation of wine dev
     # also add -DPREBUILT_WINE_WRAPPER_LOCATION=/directory/where/thefileis/ to use a prebuilt opentrack-wrapper-wine.exe.so.
 
-    export PATH=$PATH:/opt/local/bin:/opt/local/libexec/qt5/bin
+ 	# should not be necessary anymore
+    # export PATH=$PATH:/opt/local/bin:/opt/local/libexec/qt5/bin
     # For the OSC protocol clone this fork
     cd ~/Desktop
     git clone https://github.com/matatata/oscpack.git
 
-    cd ~/Desktop/oscpack
-    make install-local
+	# For osx optional:
+    #cd ~/Desktop/oscpack
+    #make install-local
     
     cd ~/Desktop/opentrack
 
@@ -51,7 +57,9 @@ Open a Terminal:
 	# optionally set a SDKROOT	although not recommended by Apple
 	# export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk    \
  	
-    
+
+	# These are experimental old or deprecated (at least from my point of view)
+    # -DSDK_OSCPACK=~/Desktop/oscpack/oscpack \
 	
 	cmake \
 	-DCMAKE_BUILD_TYPE=RELEASE \
@@ -68,8 +76,7 @@ Open a Terminal:
 	-DOpenMP_libomp_LIBRARY=/opt/local/lib/libomp/libomp.dylib \
 	-DSDK_XPLANE=~/Desktop/SDK \
  	-DSDK_WINE=1 \
-  	-DPREBUILT_WINE_WRAPPER_LOCATION=/directory/where/thefileis/ \
-        -DSDK_OSCPACK=~/Desktop/oscpack/oscpack \
+    -DSDK_WINE_PATH=~/Desktop/wine \
   	--toolchain cmake/apple.cmake \
 	-S . -B ../opentrack_build
     
