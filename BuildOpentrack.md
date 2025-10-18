@@ -9,16 +9,17 @@ Open a Terminal:
     cd ~/Desktop/
     
     # Unfortunately there's no onnxruntime in macports so we'll donwload it:
+    onxversion=1.23.0
 
-    curl -L https://github.com/microsoft/onnxruntime/releases/download/v1.17.3/onnxruntime-osx-universal2-1.17.3.tgz > onnxruntime-osx.tgz
+    curl -L "https://github.com/microsoft/onnxruntime/releases/download/v${onxversion}/onnxruntime-osx-universal2-${onxversion}.tgz" > onnxruntime-osx.tgz
     
     tar -xzf onnxruntime-osx.tgz 
 
     # We also want to compile opentacks xplane-plugin which is very convenient and need to download the X-lane SDK. In this case for X-Plane 12. **For X-Plane 11 change the SDK version to 303, but note that you can only build for x86_64**
     curl -L http://developer.x-plane.com/wp-content/plugins/code-sample-generation/sdk_zip_files/XPSDK401.zip > XPSDK.zip
     unzip XPSDK.zip
-	## choose the branch int this example I clone "develop" where I do most of the development but also experiments 
-    git clone --single-branch --branch develop https://github.com/matatata/opentrack.git
+	## choose the branch in this example I clone "master" which should be most stable
+    git clone --single-branch --branch master https://github.com/matatata/opentrack.git
 
     sudo port selfupdate
     
@@ -32,10 +33,10 @@ Open a Terminal:
     sudo port -N install clang-19
     sudo port select --set clang mp-clang-19
 
-    # For LEGACY WINE integration you'll need to have to install the 'dev' variant of wine (sudo port install wine-stable +dev)
-    # and then add the -DSDK_WINE=1 option. To skip the time consuming installation of wine dev
+    # For the WINE integration you'll need to have to install the 'dev' variant of wine (sudo port install wine-stable +dev)
+    # For the LEGACY integration then add the -DSDK_WINE=1 option. To skip the time consuming installation of wine dev
     # also add -DPREBUILT_WINE_WRAPPER_LOCATION=/directory/where/thefileis/ to use a prebuilt opentrack-wrapper-wine.exe.so.
-	# Note that since at least wine 10.x compiling winelibs is no longer supported on unix with clang, therefore I created a different
+    # Note that since at least wine 10.x compiling winelibs is no longer supported on unix with clang, therefore I created a different
 	# solution. For that clone wine and set SDK_WINE_PATH accordingly:
  	# clone wine
     git clone --single-branch --branch stable https://github.com/wine-mirror/wine.git
@@ -67,8 +68,7 @@ Open a Terminal:
 	-DCMAKE_BUILD_TYPE=RELEASE \
  	-DCMAKE_C_COMPILER=/opt/local/bin/clang -DCMAKE_CXX_COMPILER=/opt/local/bin/clang++ \
 	-DOpenCV_DIR=/opt/local/libexec/opencv4/cmake \
-	-DONNXRuntime_LIBRARY=~/Desktop/onnxruntime-osx-universal2-1.17.3/lib/libonnxruntime.dylib \
-	-DONNXRuntime_INCLUDE_DIR=~/Desktop/onnxruntime-osx-universal2-1.17.3/include \
+    -DONNXRuntime_DIR=~/Desktop/onnxruntime-osx-universal2-${onxversion} \
 	-DOpenMP_CXX_FLAG="-fopenmp" \
 	-DOpenMP_CXX_INCLUDE_DIR=/opt/local/include/libomp \
 	-DOpenMP_CXX_LIB_NAMES=libomp \
