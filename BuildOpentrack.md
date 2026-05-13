@@ -83,6 +83,14 @@ Open a Terminal:
     
     cd ../opentrack_build
     make -j5 install
+
+	# use PACKAGE=1 DEPLOY=1 and CODESIGN=1 for redistribution
+	# But note that some libs cannot be relocated and youu get errors sayinng you need to link those libs with -headerpad_max_install_names
+	# In that case you need to rebuild them and add -Wl,-headerpad_max_install_names 
+	# fpr macports this could be something like that:
+	#configure.ldflags-append \
+    #                -Wl,-headerpad_max_install_names
+	# I had this for librsvg. Uninstall it sudo port uninstall librsvg, edit the Portfile sudo port edit librsvg, sudo port install -s librsvg
     
     # switch back to default compiler:
     sudo port select --set clang none
