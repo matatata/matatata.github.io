@@ -5,7 +5,7 @@ I provide codesigned and apple-notarised pre-built binaries via [gumroad](https:
 
 ## Releases:
 
-### Version 2006.1.1-matatata.1
+### Version 2026.1.1-matatata.1
 - Based on [opentrack-2026.1.0](https://github.com/opentrack/opentrack/releases/tag/opentrack-2026.1.0)
   - Most notably it now uses the QT6 framework wich fixes the QT5 Bug where Slider-Controls behave have visual glitches when editing the Filter.
 - I've created a new output module *opentrack 2.0 Enhanced* which is accompanied by a client library, which allows game developers to easily integrate opentrack into their games. Currently this most likely will not work for sandboxed Applications (like the ones distributed via Apple's AppStore) until I replaced the inter process communication from posix shared memory to something Apple allows us to use. Alternativel the UDP networking could be used, which existed for years.
