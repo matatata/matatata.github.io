@@ -1,7 +1,7 @@
 # MacOpentrack
 I've been investing quite a lot of time in bringing [opentrack](https://github.com/opentrack/opentrack) back to the Mac. Support for macOS already existed for a long time, but with time it got more and more orphaned and there were no pre-built binaries available. So I've been trying to revive the macOS port. All my changes are available in [my fork](https://github.com/matatata/opentrack).
 
-I provide codesigned and apple-notarised pre-built binaries via [gumroad](https://matatata.gumroad.com/l/macopentrack) allowing you to support my work. You can of course build opentrack from sources, but to get it will all interesting modules it is not trivial and very time-consuming.
+I provide codesigned and apple-notarised pre-built binaries via [gumroad](https://matatata.gumroad.com/l/macopentrack) allowing you to support my work. You can of course build opentrack from sources, but to compile all interesting modules is not trivial and very time-consuming.
 
 ## Releases:
 
