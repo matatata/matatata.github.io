@@ -6,7 +6,7 @@ I provide codesigned and apple-notarised pre-built binaries via [gumroad](https:
 ## Releases:
 
 ### Version 2026.1.1-matatata.4
-- Includes upstream changes from opentrack-2026.1.0
+- Includes upstream changes from [opentrack-2026.1.0](https://github.com/opentrack/opentrack/releases/tag/opentrack-2026.1.0)
   - Most notably it now uses the QT6 framework wich fixes the QT5 Bug where Slider-Controls behave have visual glitches when editing the Filter.
 
 - I created a new output module named *opentrackclient 1.0* which is accompanied by a client library that allows game developers to easily integrate opentrack into their games.  Opentrack Wine Bridge and the X-Plane plugin are using it. It could be used for other macOS Software/Games as well. I is an abstraction, so that developers need not to deal with opentrack's internal workings. Currently this most likely will not work for sandboxed applications (like the ones distributed via Apple’s AppStore). As a future goal this approach allows to change the interprocess communication method from posix shared memory to something that will be more compatible with Apple"s restrictions. Of course the UDP networking could be used, which existed for years.
